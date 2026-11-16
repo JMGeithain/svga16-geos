@@ -18,10 +18,12 @@ The new adapter reuses the native RGB565 raster, banking, drawing and pointer re
 
 Source, build instructions and generated manifests are in [`vesa64k/`](vesa64k/README.md). The exact template must be copied into `vesa64k/vendor/` as described there.
 
-## Current validation
+## Validation status – 16 November 2026
 
-The two requested driver binaries were built and passed structural GEOS 1.x geode validation: correct kernel/video protocols, 3 resources, zero imports, zero UDATA, and all 73 original relocation records retained. The native renderer resource is preserved unchanged.
+Build and structural GEOS 1.x geode validation passed: correct kernel/video protocols, 3 resources, zero imports, zero UDATA, all 73 original relocation records retained, and the native renderer resource preserved unchanged.
 
-**Not yet runtime-verified:** Unicorn instruction tests could not run because Unicorn is unavailable in the build environment; Basebox desktop tests and physical VESA hardware tests for the new modes remain outstanding. The drivers are development builds, not a runtime-accepted release.
+**Basebox runtime test:** The user confirmed successful operation of both requested modes, 800×480×64K and 1024×600×64K. Screenshots show the 1024×600 desktop, the RGB565 colour-proof application with native colour gradients, and a successful return to the GeoWorks desktop. No crash was reported.
+
+**Still unverified:** Physical VESA hardware compatibility and Unicorn instruction-emulator tests. Basebox results do not establish compatibility with other emulators or physical graphics cards.
 
 See [`vesa64k/VESA64K_TODO.md`](vesa64k/VESA64K_TODO.md) for remaining tests.
