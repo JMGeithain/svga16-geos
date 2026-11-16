@@ -6,8 +6,9 @@
 - [x] Add fixed 800×480 and 1024×600 adapters.
 - [x] Preserve native drawing, bitmap, glyph, cursor and banking routines; patch only four adapter dispatch sites and the selected device string.
 - [x] Build `V800480.GEO` and `V102460.GEO`; structural GEOS 1.x geode inspection passes.
-- [ ] Run Unicorn instruction-emulator tests (Unicorn 2.1.4 unavailable in this build environment).
-- [ ] Test both modes in Basebox BLD285.
+- [x] User-confirmed Basebox runtime test of 800×480×64K and 1024×600×64K (16 November 2026).
+- [x] RGB565 colour-proof application displayed native colour gradients; GeoWorks returned to the desktop without a reported crash.
 - [ ] Test both modes on physical VESA hardware where the BIOS exposes them.
+- [ ] Run Unicorn instruction-emulator tests, if a suitable environment becomes available (Unicorn 2.1.4 was unavailable in the build environment).
 
-A standard VBE mode must be present and validated on ordinary hardware. Only compatible Basebox HostIf can request a missing fixed geometry as a fallback.
+The Basebox runtime confirmation applies to the user's Basebox environment only. A standard VBE mode must be present and validated on ordinary hardware. Only compatible Basebox HostIf can request a missing fixed geometry as a fallback.
