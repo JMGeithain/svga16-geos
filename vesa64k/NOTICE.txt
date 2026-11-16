@@ -1,0 +1,5 @@
+VESA64K GeoWorks 1.x RGB565 backport
+
+The native S16_1280.GEO renderer template is supplied by the user and retains its original ownership. No relicensing of that binary is implied.
+
+The new adapter and build code are marked SPDX-License-Identifier: Apache-2.0. The implementation derives HostIf protocol behaviour from the Apache-2.0 PC/GEOS source tree supplied with the project. See https://www.apache.org/licenses/LICENSE-2.0.
