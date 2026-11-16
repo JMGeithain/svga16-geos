@@ -97,7 +97,7 @@ Stand: 2026-10-28 12:51 (Europe/Berlin)
 | 1024×768 | boot OK | Maus-Move + Drag ohne Vollbild-Streifen (`shot_n1024_*`); BaseBox-Retest kritisch |
 | 1280×1024 | nicht neu getestet diese Runde | Absturz bei Fensterbewegung (User) — offen |
 
-## Diese Runde (Valentin-Feedback 2026-10-28)
+## Diese Runde (Feedback 2026-10-28)
 
 Nur **16-Farben**; VESA64K pausiert. Symptome: 1024 startet, Maus→Streifen/Weiß; Prefs Crash/Hänger + eingebrannter Cursor; Mode-Test hängt; 800 stabil.
 
@@ -144,7 +144,7 @@ Super-VGA 16 Farben: 640×480, 800×600, 1024×768, 1280×1024.
 
 ## Ergebnis dieser Runde
 
-**Datei:** `build/SVGA16.GEO`  
+**Datei:** `build/SVGA16.GEO` 
 **SHA-256:** `6b45fc1ec5c94addeb7a2c6848c833e5f62c86d40be7a23a2d03cee2d7add627`
 
 | Mode | Set | Ergebnis | Screenshot |
@@ -163,7 +163,7 @@ Super-VGA 16 Farben: 640×480, 800×600, 1024×768, 1280×1024.
 - `SetVESABank`: Window A+B (4F05). CalcOffset setzt Bank aus MUL-Highwort (64K-Granularität).
 
 ### Hartes Limit: Full-Width `rep stosb` über 64K
-Bei voller Zeilenbreite ist SMC-`lineDelta` ≈ 0. DI läuft während `rep stosb` über die Bankgrenze **ohne Carry auf dem späteren `add di,delta`**. LoopEnd sieht keinen Carry → kein Bank++.  
+Bei voller Zeilenbreite ist SMC-`lineDelta` ≈ 0. DI läuft während `rep stosb` über die Bankgrenze **ohne Carry auf dem späteren `add di,delta`**. LoopEnd sieht keinen Carry → kein Bank++. 
 Deshalb bleibt die **Bankgrenze bei Y≈512** (65536/128) für große Rechteck-Fills (GeoManager-Fensterfläche).
 
 Mögliche Next Steps (nicht in diesem Stand): `rep stosb` splitten wenn `DI+CX` wrappt; oder 32-bit `scanLinear` mit sicherem Zeilenanfang-Hook (Call an `3033` war ebenfalls schwarz).
@@ -181,7 +181,7 @@ python3 tools/build_svga16.py
 ./testenv/run_video2.sh <tag> SVGA16.GEO "<Gerätename>" <Sek>
 ```
 
-Quellen: `src/svga16_multi.asm`, `src/svga16_bank.asm`, `tools/build_svga16.py`  
+Quellen: `src/svga16_multi.asm`, `src/svga16_bank.asm`, `tools/build_svga16.py` 
 Basis: `drivers_video/SVGA8004_de.GEO`
 
 ## Laufendes Log 2026-10-19 abends (Europe/Zagreb)

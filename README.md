@@ -20,7 +20,7 @@ Weitere Geräte (Präfix `VESA Kompatible Super VGA: `): `640x480 16 Farben`, `8
 ## SHA-256
 
 ```
-ffb971527acce57f4e685777ee22ad4977a2f6e0a4933d0bcb988df5af45af85  dist/SVGA16.GEO
+ffb971527acce57f4e685777ee22ad4977a2f6e0a4933d0bcb988df5af45af85 dist/SVGA16.GEO
 ```
 
 Build-Stand: **ffb97152** (u. a. Fix gegen Menü-Schmierspur bei 1024/1280).
@@ -38,4 +38,4 @@ Build-Stand: **ffb97152** (u. a. Fix gegen Menü-Schmierspur bei 1024/1280).
 
 ## Hinweis: mit KI erstellt
 
-**Dieser Treiber und diese Dokumentation wurden mit KI erstellt** (u. a. Grok Bot / Cursor-Agenten), begleitet und getestet von Valentin Möller und Johannes Möller. Community-/Hobby-Projekt, kein offizielles GeoWorks-Produkt.
+**Dieser Treiber und diese Dokumentation wurden mit KI erstellt** (u. a. Grok Bot / Cursor-Agenten). Community-/Hobby-Projekt, kein offizielles GeoWorks-Produkt.

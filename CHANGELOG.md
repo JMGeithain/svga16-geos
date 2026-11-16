@@ -8,7 +8,7 @@ Offen bleibt der Test von ffb97152 und PIXJAGD in der echten BaseBox des Vaters.
 
 ## 2026-11-15 13:20 CET — SVGA16 Mode-Test + SaveUnder-Regression (ffb97152, nur Test)
 
-Nur 16 Farben (VESA64K unberührt). Basis ffb97152 (bereits an Valentin geliefert). Backup `build/bak_ffb97152_pre_modetest.GEO`, Quellen `src/svga16_{bank,multi}.asm.bak_ffb97152`, `tools/build_svga16.py.bak_ffb97152`. **Kein Code-Change, kein neues GEO.** `/workspace/geos-game/` nicht angefasst. Nichts an Valentin geschickt. Ergebnisse: **lokale BaseBox**, nicht echte Hardware.
+Nur 16 Farben (VESA64K unberührt). Basis ffb97152 (bereits ausgeliefert). Backup `build/bak_ffb97152_pre_modetest.GEO`, Quellen `src/svga16_{bank,multi}.asm.bak_ffb97152`, `tools/build_svga16.py.bak_ffb97152`. **Kein Code-Change, kein neues GEO.** `/workspace/geos-game/` nicht angefasst. Noch nicht weitergegeben. Ergebnisse: **lokale BaseBox**, nicht echte Hardware.
 
 Ablauf Mode-Test (Prefs → Video → Ändern → VESA-Modus wählen → Listen-OK → äußeres Video-OK → **Ja** → Hinweis-OK): Nach dem Neustart erscheint das SETUP-Testbild („In jeder Bildschirmecke sollten Sie einen kleinen Pfeil sehen…“), dann ENTER → 16-Farben-Palette, ENTER → Bestätigung, ENTER → Desktop. Nicht F10 (das würde zurückschalten); Bestätigung nur per ENTER bzw. Maus, nicht die Liste mit Return abschließen.
 
@@ -153,7 +153,7 @@ Priorität: **nur 16-Farben**. Feedback t13u: 1024 Maus→Streifen/Weiß, Prefs 
 `driver = SVGA16.GEO`, `device = VESA Kompatible Super VGA: … 16 Farben`, `info = 16384`.
 
 
-## 2026-10-28 12:40 CET — Valentin Feedback SVGA16 / VESA16 (DOSBox)
+## 2026-10-28 12:40 CET — Feedback SVGA16 / VESA16 (DOSBox)
 
 Quelle: t12u/t13u Screenshots + Text. Priorität: **nur 16-Farben**, VESA64K zurückgestellt.
 
