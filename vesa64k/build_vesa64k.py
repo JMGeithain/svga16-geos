@@ -5,8 +5,6 @@ from pathlib import Path
 import hashlib, json, struct, subprocess, sys
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
-from inspect_geodes import inspect
 
 TEMPLATE = HERE / "vendor" / "S16_1280.GEO"
 EXPECTED = "5c56db2b0c39ac66e7448a672a68c8722876b547c7822a006cd31da26f98654d"
@@ -64,6 +62,24 @@ def compile_adapter(stem, width, height):
     assert symbols["AdapterEnd"] == ORIGIN + len(code)
     assert ORIGIN + len(code) < 0x10000
     return code, symbols, commands
+
+
+def validate_geode(data):
+    assert data[:4] == bytes.fromhex("c745cf53"), "not a GEOS 1.x geode"
+    assert struct.unpack_from("<2H", data, 0xCC) == (622, 3), "kernel protocol mismatch"
+    assert struct.unpack_from("<2H", data, 0xEE) == (601, 0), "video protocol mismatch"
+    resource_count, import_count, export_count, udata_size = struct.unpack_from("<4H", data, 0xD0)
+    assert resource_count == 3 and import_count == 0 and udata_size == 0
+    offset = 0x120 + import_count * 14 + export_count * 4
+    sizes = struct.unpack_from("<%dH" % resource_count, data, offset)
+    offset += 2 * resource_count
+    positions = struct.unpack_from("<%dI" % resource_count, data, offset)
+    offset += 4 * resource_count
+    reloc_sizes = struct.unpack_from("<%dH" % resource_count, data, offset)
+    assert sum(size // 4 for size in reloc_sizes) == 73
+    for size, pos, reloc_size in zip(sizes, positions, reloc_sizes):
+        assert pos + size + reloc_size <= len(data), "resource outside file"
+        assert reloc_size % 4 == 0
 
 
 def build_one(original, filename, width, height, string_handle, device, title):
@@ -142,14 +158,7 @@ def build_one(original, filename, width, height, string_handle, device, title):
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_bytes(output)
 
-    parsed = inspect(destination)
-    assert parsed["validation_errors"] == []
-    assert parsed["format"] == "GEOS 1.x geode"
-    assert parsed["kernel_protocol"] == [622, 3]
-    assert parsed["geode_protocol"] == [601, 0]
-    assert parsed["udata_size"] == 0
-    assert parsed["relocation_count"] == 73
-    assert parsed["import_count"] == 0
+    validate_geode(output)
 
     changed = [
         i for i in range(0x6700)
