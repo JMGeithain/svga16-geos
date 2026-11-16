@@ -1,0 +1,33 @@
+{
+  "target": "GeoWorks 1.x",
+  "pixel_format": "RGB565",
+  "bpp": 16,
+  "colors": 65536,
+  "drivers": [
+    {
+      "filename": "V800480.GEO",
+      "geometry": "800x480",
+      "bytes": 34882,
+      "sha256": "88e626a3ed5987279438a032dfa4f28a5aa745c7c54deb513debc8ac95d9730d",
+      "device": "VESA Compatible SuperVGA: 800x480 64K-color"
+    },
+    {
+      "filename": "V102460.GEO",
+      "geometry": "1024x600",
+      "bytes": 34882,
+      "sha256": "fc02ade9f1c48cee77da49e60424d7b7f04f84ac7b757eb7107c45edc1137d2e",
+      "device": "VESA Compatible SuperVGA: 1024x600 64K-color"
+    },
+    {
+      "filename": "V16_0720.GEO",
+      "geometry": "1280x720",
+      "bytes": 34882,
+      "sha256": "451a71697238356784443813632ebc2c2821ab143f985d56979463b717e3ab9e",
+      "device": "VESA Compatible SuperVGA: 1280x720 64K-color",
+      "purpose": "reference/regression build"
+    }
+  ],
+  "template_sha256": "5c56db2b0c39ac66e7448a672a68c8722876b547c7822a006cd31da26f98654d",
+  "native_relocations_retained": 73,
+  "validation": "GEOS 1.x structure validated; runtime tests pending"
+}
