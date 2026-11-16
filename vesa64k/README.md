@@ -43,11 +43,25 @@ For 1024×600, use `V102460.GEO` and its matching device string. Back up `GEOS.I
 
 ## Validation status
 
+### Build and static validation
+
 - Build completed; all three fixed VESA outputs pass structural GEOS 1.x geode inspection.
 - The original native renderer bytes are retained unchanged; the builder asserts this.
 - VBE discovery, mode validation and RGB565 checks are implemented.
 - Unicorn instruction-emulator tests were not run: Unicorn 2.1.4 is not installed and cannot be downloaded in this environment.
-- Basebox desktop and physical VESA hardware tests for 800×480 and 1024×600 have **not yet been performed**. These are development builds, not runtime-accepted releases.
+
+### Basebox runtime validation – 16 November 2026
+
+- **800×480×64K:** user-confirmed successful selection and operation in Basebox.
+- **1024×600×64K:** user-confirmed successful operation; the supplied screenshots show GeoWorks running with the 1024×600 device selected.
+- The RGB565 colour-proof application ran and displayed the expected native RGB colour gradients (32 red, 64 green and 32 blue levels).
+- The display test returned to the GeoWorks desktop; no crash was reported.
+- These results validate both requested modes in the user's Basebox environment. They do not establish compatibility with physical VESA hardware or unrelated emulators.
+
+### Still open
+
+- Physical VESA hardware tests where the BIOS exposes the requested modes.
+- Unicorn instruction-emulator tests, if a suitable environment becomes available.
 
 ## Provenance
 
