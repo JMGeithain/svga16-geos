@@ -24,7 +24,7 @@ Der neue Treiber muss daher unabhängig davon implementiert werden:
 5. LFB nur verwenden, wenn das Mode-Info-Attribut es ausweist und `PhysBasePtr` gültig ist. Modus mit LFB-Bit setzen (VBE 4F02h, Bit 14). Andernfalls VBE-Fenster, Granularität und Window-Segment sauber ermitteln und Bankzugriffe abstrahieren.
 6. GEOS-Pixelfunktionen auf 16-Bit-Elemente portieren: Pixel setzen, horizontale/vertikale Linien, Füllungen, Screen-to-Screen- und RAM-to-Screen-Kopien, Bitmaps, Glyphen, Cursor-Save/Restore sowie Clipping.
 7. Pitch aus `BytesPerScanLine` übernehmen. Niemals `width*2` voraussetzen, wenn die Hardware ein anderes Pitch meldet.
-8. Speichergrenzen mit 32-Bit-Offsets berechnen. 800×480 benötigt bei dichtem Pitch 1.536.000 Byte, 1024×600 benötigt 2.457.600 Byte? Nein: Die hier tabellierten Byte-Zahlen beziehen sich auf 16 bpp; die Laufzeitprüfung muss den realen Pitch × Höhe verwenden.
+8. Speichergrenzen mit 32-Bit-Offsets berechnen. Der Laufzeitbedarf ist `BytesPerScanLine × YResolution`; die Tabellenwerte oben sind die Mindestgröße bei dichtem Pitch.
 
 ## Warum dieser Zweig zunächst nur Spezifikation / Gerüst ist
 
@@ -46,7 +46,7 @@ Die tatsächliche Framebuffer-Größe für die GEOS-Konfiguration ist mindestens
 - `SVGA16.GEO` muss byte-identisch bleiben.
 - Ein künftiger `build_vesa64k.py` muss ein eigenes GEOS-Objekt erzeugen und `VESA64K.GEO` ausgeben.
 - Modusabfrage und LFB-/Bank-Fallback separat testen.
-- Erst nach Implementierung der 16-bpp-V D I-Routinen in DOSBox/BaseBox und, soweit verfügbar, auf realer VESA-Hardware testen.
+- Erst nach Implementierung der 16-bpp-VDI-Routinen in DOSBox/BaseBox und, soweit verfügbar, auf realer VESA-Hardware testen.
 - Regression: vorhandene 640×480, 800×600, 1024×768 und 1280×1024 ×16 bleiben mit `SVGA16.GEO` unverändert verfügbar.
 
 ## Referenzen im Repository
